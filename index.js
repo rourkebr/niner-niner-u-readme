@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown.js');
-const writeFile = require('./utils/generate-input.js')
+// const generateMarkdown = require('./utils/generateMarkdown.js');
+// const writeFile = require('./utils/generate-input.js')
 
 // TODO: Create an array of questions for user input
 const promptUser = () => {
@@ -30,7 +30,7 @@ const promptUser = () => {
                 if (emailInput) {
                     return true;
                 } else {
-                    console.log('Please enter your email.');
+                    console.log('Please enter your email for follow up questions.');
                     return false
                 }
             }
@@ -51,7 +51,7 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            name: 'descrption',
+            name: 'description',
             message: 'Please give a breif description of your project.',
             validate: nameInput => {
                 if (nameInput) {
@@ -95,10 +95,10 @@ const promptUser = () => {
             default: true
         },
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'license',
             message: 'Select which License you used from the list',
-            choices: ['Apache', 'MIT', 'GPL', 'BSD'],
+            choices: ['Apache', 'GPL'],
             when: ({ confirmLicense }) => confirmLicense
         },
         {
