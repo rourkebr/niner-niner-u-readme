@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 const inquirer = require('inquirer');
-// const generateMarkdown = require('./utils/generateMarkdown.js');
-// const writeFile = require('./utils/generate-input.js')
+const generateMarkdown = require('./generateMarkdown');
+
 
 // TODO: Create an array of questions for user input
 const promptUser = () => {
@@ -121,15 +121,14 @@ const promptUser = () => {
             .then(response => generateMarkdown(response))
 
             .then(response => {
-                return writeFile(readmeinput);
+                fs.writeFileSync("OUTPUT.md",response,function(error){
+                    if(error)throw error;
+                })
+                console.log("MArkdown file generated check OUTPUT.md")
             })
 
             .catch(err => {
                 console.log(err);
             });
 
-    // TODO: Create a function to initialize app
-    function init() {}
-
-    // Function call to initialize app
-    init();
+    
